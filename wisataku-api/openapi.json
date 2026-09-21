@@ -1,0 +1,217 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/destinasi": {
+      "get": {
+        "operationId": "DestinasiController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Berhasil mengambil daftar destinasi."
+          }
+        },
+        "summary": "Menampilkan seluruh daftar destinasi wisata",
+        "tags": [
+          "destinasi"
+        ]
+      },
+      "post": {
+        "operationId": "DestinasiController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDestinasiDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Destinasi wisata berhasil dibuat."
+          },
+          "400": {
+            "description": "Input data tidak valid."
+          }
+        },
+        "summary": "Menambahkan destinasi wisata baru",
+        "tags": [
+          "destinasi"
+        ]
+      }
+    },
+    "/destinasi/{id}": {
+      "get": {
+        "operationId": "DestinasiController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "ID Destinasi",
+            "schema": {
+              "example": 1,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detail destinasi ditemukan."
+          },
+          "404": {
+            "description": "Destinasi tidak ditemukan."
+          }
+        },
+        "summary": "Menampilkan detail destinasi berdasarkan ID",
+        "tags": [
+          "destinasi"
+        ]
+      },
+      "patch": {
+        "operationId": "DestinasiController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "ID Destinasi",
+            "schema": {
+              "example": 1,
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDestinasiDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Destinasi berhasil diperbarui."
+          },
+          "404": {
+            "description": "Destinasi tidak ditemukan."
+          }
+        },
+        "summary": "Mengubah sebagian data destinasi wisata",
+        "tags": [
+          "destinasi"
+        ]
+      },
+      "delete": {
+        "operationId": "DestinasiController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "ID Destinasi",
+            "schema": {
+              "example": 1,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Destinasi berhasil dihapus."
+          },
+          "404": {
+            "description": "Destinasi tidak ditemukan."
+          }
+        },
+        "summary": "Menghapus destinasi wisata",
+        "tags": [
+          "destinasi"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "WisataKu API",
+    "description": "API untuk platform informasi dan reservasi destinasi wisata",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "CreateDestinasiDto": {
+        "type": "object",
+        "properties": {
+          "nama": {
+            "type": "string",
+            "description": "Nama tempat wisata",
+            "example": "Candi Borobudur"
+          },
+          "kategori": {
+            "type": "string",
+            "description": "Kategori wisata",
+            "example": "Sejarah & Budaya"
+          },
+          "hargaTiket": {
+            "type": "number",
+            "description": "Harga tiket masuk dalam Rupiah",
+            "example": 50000
+          }
+        },
+        "required": [
+          "nama",
+          "kategori",
+          "hargaTiket"
+        ]
+      },
+      "UpdateDestinasiDto": {
+        "type": "object",
+        "properties": {
+          "nama": {
+            "type": "string",
+            "description": "Nama tempat wisata",
+            "example": "Candi Borobudur"
+          },
+          "kategori": {
+            "type": "string",
+            "description": "Kategori wisata",
+            "example": "Sejarah & Budaya"
+          },
+          "hargaTiket": {
+            "type": "number",
+            "description": "Harga tiket masuk dalam Rupiah",
+            "example": 50000
+          }
+        }
+      }
+    }
+  }
+}
