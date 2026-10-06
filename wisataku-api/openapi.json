@@ -18,15 +18,24 @@
     "/destinasi": {
       "get": {
         "operationId": "DestinasiController_findAll",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "kategori",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Berhasil mengambil daftar destinasi."
+            "description": ""
           }
         },
-        "summary": "Menampilkan seluruh daftar destinasi wisata",
+        "summary": "Menampilkan daftar destinasi, dapat difilter berdasarkan kategori",
         "tags": [
-          "destinasi"
+          "Destinasi"
         ]
       },
       "post": {
@@ -44,15 +53,11 @@
         },
         "responses": {
           "201": {
-            "description": "Destinasi wisata berhasil dibuat."
-          },
-          "400": {
-            "description": "Input data tidak valid."
+            "description": ""
           }
         },
-        "summary": "Menambahkan destinasi wisata baru",
         "tags": [
-          "destinasi"
+          "Destinasi"
         ]
       }
     },
@@ -64,24 +69,18 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "description": "ID Destinasi",
             "schema": {
-              "example": 1,
               "type": "number"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Detail destinasi ditemukan."
-          },
-          "404": {
-            "description": "Destinasi tidak ditemukan."
+            "description": ""
           }
         },
-        "summary": "Menampilkan detail destinasi berdasarkan ID",
         "tags": [
-          "destinasi"
+          "Destinasi"
         ]
       },
       "patch": {
@@ -91,9 +90,7 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "description": "ID Destinasi",
             "schema": {
-              "example": 1,
               "type": "number"
             }
           }
@@ -110,15 +107,11 @@
         },
         "responses": {
           "200": {
-            "description": "Destinasi berhasil diperbarui."
-          },
-          "404": {
-            "description": "Destinasi tidak ditemukan."
+            "description": ""
           }
         },
-        "summary": "Mengubah sebagian data destinasi wisata",
         "tags": [
-          "destinasi"
+          "Destinasi"
         ]
       },
       "delete": {
@@ -128,24 +121,18 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "description": "ID Destinasi",
             "schema": {
-              "example": 1,
               "type": "number"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Destinasi berhasil dihapus."
-          },
-          "404": {
-            "description": "Destinasi tidak ditemukan."
+            "description": ""
           }
         },
-        "summary": "Menghapus destinasi wisata",
         "tags": [
-          "destinasi"
+          "Destinasi"
         ]
       }
     }
